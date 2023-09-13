@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HouseController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,8 @@ Route::get('admin', function () {
 Route::get('admin/house/{house}/delete',[HouseController::class, 'destroy'])->name('house.delete');
 Route::resource('admin/house',HouseController::class);
 
-Route::get('admin/room/{room}/delete',[HouseController::class, 'destroy'])->name('room.delete');
-Route::resource('admin/room',HouseController::class);
+Route::get('admin/room/{room}/delete',[RoomController::class, 'destroy'])->name('room.delete');
+Route::resource('admin/room',RoomController::class);
 //Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

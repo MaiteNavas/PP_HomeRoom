@@ -3,63 +3,65 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\House;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
-    }
+        $rooms = Room::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
+        return view('room.index', compact('rooms'));
+    }
     public function create()
     {
-        //
+        $houses = House::all();
+        return view('room.create', compact('houses'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        Room::create([
+            'id_house' => $request->id_house,
+            'name' => $request->name,
+            'description' => $request->description,
+            
+        ]);
+
+        return redirect('admin/room');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Room $room)
+    public function show($id)
     {
-        //
-    }
+        $room = Room::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Room $room)
+        return view('room.show', compact('room'));
+    }
+    public function edit($id)
     {
-        //
+        $room = Room::find($id);
+        $houses = House::all();
+        
+        return view('room.edit', compact('room','houses'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Room $room)
     {
-        //
-    }
+        $room->update([
+            'id_house' => $request->id_house,
+            'name' => $request->name,
+            'description' => $request->description,
+            
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Room $room)
+        return redirect('admin/room');
+    }
+    public function destroy($id)
     {
-        //
+        Room::where('id',$id)->delete();
+
+        return redirect('admin/room');
     }
 }
