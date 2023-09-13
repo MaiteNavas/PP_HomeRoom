@@ -15,6 +15,7 @@ class Room extends Model
         "id_house",
         "name",
         "description",
+        "price"
         
     ];
     function house(){

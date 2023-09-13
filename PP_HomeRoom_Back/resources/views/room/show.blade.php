@@ -23,6 +23,10 @@
                         <th>Alojamiento</th>
                         <td>{{ $room->house->name }}</td>
                    </tr>
+                   <tr>
+                        <th>Precio</th>
+                        <td>{{ $room->price }}</td>
+                   </tr>
                 </table>
             </div>
         </div>

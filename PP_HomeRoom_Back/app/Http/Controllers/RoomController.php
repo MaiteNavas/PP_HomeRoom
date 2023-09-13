@@ -25,15 +25,12 @@ class RoomController extends Controller
             'id_house' => $request->id_house,
             'name' => $request->name,
             'description' => $request->description,
+            'price' => $request->price,
             
         ]);
 
         return redirect('admin/room');
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $room = Room::find($id);
@@ -52,8 +49,8 @@ class RoomController extends Controller
         $room->update([
             'id_house' => $request->id_house,
             'name' => $request->name,
-            'description' => $request->description,
-            
+            'description' => $request->description, 
+            'price' => $request->price,   
         ]);
 
         return redirect('admin/room');

@@ -4,13 +4,13 @@
 <div class="container fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Añadir habitación
-            <a href="{{ route('room.index') }}" class="float-right btn btn-success btn-sm">Volver</a>
+            <h6 class="m-0 font-weight-bold text-primary">Añadir cliente
+            <a href="{{ route('customer.index') }}" class="float-right btn btn-success btn-sm">Volver</a>
             </h6>
         </div>
         <div class="card-body"> 
             <div class="table-responsive">
-                <form action="{{ route('room.store') }}" method="post">
+                <form action="{{ route('customer.store') }}" method="post">
                     @csrf
                 <table class="table table-bordered" >
                    <tr>
@@ -18,21 +18,20 @@
                         <td><input type="text" class="form-control" name="name"/></td>
                    </tr>
                    <tr>
-                        <th>Descripción</th>
-                        <td><textarea type="text" class="form-control" name="description"></textarea></td>
+                        <th>Apellidos</th>
+                        <td><textarea type="text" class="form-control" name="family_name"></textarea></td>
                    </tr>
                    <tr>
-                        <th>Alojamiento</th>
-                        <td><select name="id_house" required class="form-control" id="house">
-                            @foreach ($houses as $house)
-                                <option value="{{ $house->id }}">{{ $house->name }}</option>
-                            @endforeach
-                            </select>
-                        </td>
+                        <th>Email</th>
+                        <td><input type="text" class="form-control" name="email"/></td>
                    </tr>
                    <tr>
-                        <th>Precio</th>
-                        <td><textarea type="text" class="form-control" name="price"></textarea></td>
+                        <th>Teléfono</th>
+                        <td><input type="text" class="form-control" name="phone"/></td>
+                   </tr>
+                   <tr>
+                        <th>Dirección</th>
+                        <td><input type="text" class="form-control" name="address"/></td>
                    </tr>
                    <tr>
                         <td colspan="2">

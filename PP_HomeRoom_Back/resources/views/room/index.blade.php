@@ -16,30 +16,30 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Descripción</th>
                             <th>Alojamiento</th>
+                            <th>Precio</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                        <th>ID</th>
+                            <th>ID</th>
                             <th>Nombre</th>
-                            <th>Descripción</th>
                             <th>Alojamiento</th>
+                            <th>Precio</th>
                             <th>Acciones</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach($rooms as $room)
                         <tr>
-                            <td>{{$room->id}}</td>
-                            <td>{{$room->name}}</td>
-                            <td>{{$room->description}}</td>
-                            <td>{{$room->house->name}}</td>
+                            <td>{{ $room->id }}</td>
+                            <td>{{ $room->name }}</td>
+                            <td>{{ $room->house->name }}</td>
+                            <td>{{ $room->price }}</td>
                             <td>
-                                <a href="{{ route('room.show',$room->id)}}" class="btn btn-info btn-sm">Ver</a>
-                                <a href="{{ route('room.edit',$room->id)}}" class="btn btn-primary btn-sm">Editar</a>  
+                                <a href="{{ route('room.show',$room->id) }}" class="btn btn-info btn-sm">Ver</a>
+                                <a href="{{ route('room.edit',$room->id) }}" class="btn btn-primary btn-sm">Editar</a>  
                                 <!-- Button trigger modal -->
                                 <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</a>
                                 <!-- Modal -->

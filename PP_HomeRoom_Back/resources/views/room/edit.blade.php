@@ -33,6 +33,10 @@
                             </select>
                         </td>
                    <tr>
+                   <tr>
+                        <th>Precio</th>
+                        <td><input type="text" value ="{{ $room->price }}" class="form-control" name="price"/></td>
+                   </tr>
                         <td colspan="2">
                             <input type="submit" class="btn btn-primary">
                         </td>

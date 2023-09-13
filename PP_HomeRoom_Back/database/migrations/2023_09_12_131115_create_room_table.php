@@ -18,7 +18,9 @@ return new class extends Migration
                 $table->foreign('id_house')->references('id')->on('house');
                 $table->string('name');
                 $table->string('description');
-                $table->string('room_img');   
+                $table->decimal('price', 5, 2);
+                $table->string('room_img');
+                $table->timestamps();
             });
   
     }
