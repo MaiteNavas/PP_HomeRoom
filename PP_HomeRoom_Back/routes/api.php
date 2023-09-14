@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\HouseController;
+use App\Http\Controllers\Api\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,11 @@ Route::controller(HouseController::class)->group(function (){
     Route::get('/admin/house/{id}', 'show');
     Route::put('/admin/house/{id}', 'update');
     Route::delete('/admin/house/{id}', 'destroy');
+});
+Route::controller(RoomController::class)->group(function (){
+    Route::get('/admin/room', 'index');
+    Route::post('/admin/room', 'store');
+    Route::get('/admin/room/{id}', 'show');
+    Route::put('/admin/room/{id}', 'update');
+    Route::delete('/admin/room/{id}', 'destroy');
 });

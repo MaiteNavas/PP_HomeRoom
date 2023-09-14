@@ -21,7 +21,7 @@ function IndexHouse(){
   return (
     <div>
         <div className='d-grid gap-2'>
-            <Link to="/create" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Añadir alojamiento</Link>
+            <Link to="./create" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Añadir alojamiento</Link>
         </div>
         <table className='table table-striped'>
             <thead className='bg-primary text-white'>
@@ -29,7 +29,7 @@ function IndexHouse(){
                     <th>Nombre</th>
                     <th>descripción</th>
                     <th>Ciudad</th>
-                    <th>Action</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,8 +40,8 @@ function IndexHouse(){
                         <td>{house.city}</td>
 
                         <td>
-                            <Link to={`/admin/house/edit/${house.id}`} className='btn btn-info'>Edit</Link>
-                            <button onClick={ ()=>deleteHouse(house.id)} className='btn btn-danger'>Delete</button>
+                            <Link to={`/admin/house/edit/${house.id}`} className='btn btn-info'>Editar</Link>
+                            <button onClick={ ()=>deleteHouse(house.id)} className='btn btn-danger'>Eliminar</button>
                         </td>
                     </tr>
                 ))}                

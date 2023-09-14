@@ -30,7 +30,7 @@ class HouseController extends Controller
 
         return $house;
     }
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $house = House::findorFail($request->id);
         $house->update([

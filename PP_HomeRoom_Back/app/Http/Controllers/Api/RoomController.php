@@ -15,19 +15,13 @@ class RoomController extends Controller
 
         return $rooms;
     }
-    public function create()
-    {
-        $houses = House::all();
-        return $houses;
-    }
     public function store(Request $request)
     {
         $room = Room::create([
-            'id_house' => $request->id_house,
             'name' => $request->name,
             'description' => $request->description,
-            'price' => $request->price,
-            
+            'id_house' => $request->id_house,
+            'price' => $request->price,   
         ]);
 
         return $room;
@@ -45,8 +39,9 @@ class RoomController extends Controller
         
         return $room;
     }
-    public function update(Request $request, Room $room)
+    public function update(Request $request)
     {
+        $room = House::findorFail($request->id);
         $room->update([
             'id_house' => $request->id_house,
             'name' => $request->name,

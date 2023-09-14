@@ -3,11 +3,12 @@ import React,{useState, useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 function EditHouse(){
-    const endpoint = 'http://localhost:8000/api/admin/house/'
+    const endpoint = 'http://localhost:8000/api/admin/room/'
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    const [city, setCity] = useState('')
+    const [id_house, setIdHouse] = useState('')
+    const [price, setPrice] = useState('')
     const navigate = useNavigate()
     const {id} = useParams()
     const update = async (e) => {
@@ -15,16 +16,18 @@ function EditHouse(){
         await axios.put(`${endpoint}${id}`, {
             name: name,
             description: description,
-            city: city,
+            id_house: id_house,
+            price: price,
         })
-        navigate('/admin/house')
+        navigate('/admin/room')
     }
     useEffect( () =>{
         const getHouseById = async () => {
             const response = await axios.get(`${endpoint}${id}`)
             setName(response.data.name)
             setDescription(response.data.description)
-            setCity(response.data.city)
+            setIdHouse(response.data.id_house)
+            setPrice(response.data.price)
         }
         getHouseById()
         
@@ -52,10 +55,19 @@ function EditHouse(){
                 />
             </div>
             <div className='mb-3'>
-                <label className='form-label'>Ciudad</label>
+                <label className='form-label'>ID Alojamiento</label>
                 <input 
-                    value={city} 
-                    onChange={ (e)=> setCity(e.target.value)}
+                    value={id_house} 
+                    onChange={ (e)=> setIdHouse(e.target.value)}
+                    type='text'
+                    className='form-control'
+                />
+            </div>
+            <div className='mb-3'>
+                <label className='form-label'>Precio</label>
+                <input 
+                    value={price} 
+                    onChange={ (e)=> setPrecio(e.target.value)}
                     type='text'
                     className='form-control'
                 />
