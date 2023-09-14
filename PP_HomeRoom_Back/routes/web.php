@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Auth\LoginRegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,7 @@ use App\Http\Controllers\CustomerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('admin', function () {
-    return view('dashboard');
+    return view('home');
 });
 Route::get('admin/house/{house}/delete',[HouseController::class, 'destroy'])->name('house.delete');
 Route::resource('admin/house',HouseController::class);
@@ -34,10 +32,12 @@ Route::resource('admin/customer',CustomerController::class);
 //Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::view('/login',"login")->name('login');
-Route::view('/registro',"register")->name('registro');
-Route::view('/privada',"secret")->name('privada');
-
-Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
-Route::post('/inicia-sesion', [LoginController::class, 'login'])->name('inicia-sesion');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+ 
+Route::controller(LoginRegisterController::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::get('/admin', 'admin')->name('admin');
+    Route::post('/logout', 'logout')->name('logout');
+});
