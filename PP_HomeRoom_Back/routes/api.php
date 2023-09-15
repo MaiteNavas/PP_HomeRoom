@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\HouseController;
 use App\Http\Controllers\Api\RoomController;
+use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\LoginRegisterController;
 
 /*
@@ -34,6 +35,13 @@ Route::controller(RoomController::class)->group(function (){
     Route::get('/admin/room/{id}', 'show');
     Route::put('/admin/room/{id}', 'update');
     Route::delete('/admin/room/{id}', 'destroy');
+});
+Route::controller(CustomerController::class)->group(function (){
+    Route::get('/admin/customer', 'index');
+    Route::post('/admin/customer', 'store');
+    Route::get('/admin/customer/{id}', 'show');
+    Route::put('/admin/customer/{id}', 'update');
+    Route::delete('/admin/customer/{id}', 'destroy');
 });
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');

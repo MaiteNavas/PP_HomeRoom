@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function NavBarAdmin(){
+function NavBar(){
 
     return(
 
@@ -15,28 +15,18 @@ function NavBarAdmin(){
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/admin/house">Alojamientos</a>
+                            <a className="nav-link active" aria-current="page" href="/admin/house">INICIO</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/admin/room">Habitaciones</a>
+                            <a className="nav-link active" aria-current="page" href="/admin/room">ALOJAMIENTOS</a>
                         </li>
                         <li clasName="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Reservas</a>
+                            <a className="nav-link active" aria-current="page" href="#">TARIFAS</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/admin/customer">Clientes</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Ventas</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Calendario</a>
+                            <a className="nav-link active" aria-current="page" href="/admin/customer">CONTACTO</a>
                         </li>
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -45,4 +35,4 @@ function NavBarAdmin(){
 );   
 
 }
-export default  NavBarAdmin
+export default  NavBar
