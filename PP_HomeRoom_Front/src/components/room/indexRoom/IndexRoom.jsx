@@ -20,8 +20,8 @@ function IndexRoom(){
     }
   return (
     <div>
-        <div className='d-grid gap-2'>
-            <Link to="./create" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Añadir habitación</Link>
+        <div className=''>
+            <Link to="./create" className='btn btn-success btn-sm mt-2 mb-2 text-white'>Añadir habitación</Link>
         </div>
         <table className='table table-striped'>
             <thead className='bg-primary text-white'>

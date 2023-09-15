@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\HouseController;
 use App\Http\Controllers\Api\RoomController;
+use App\Http\Controllers\Api\LoginRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,12 @@ Route::controller(RoomController::class)->group(function (){
     Route::get('/admin/room/{id}', 'show');
     Route::put('/admin/room/{id}', 'update');
     Route::delete('/admin/room/{id}', 'destroy');
+});
+Route::controller(LoginRegisterController::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::get('/admin', 'admin')->name('admin');
+    Route::post('/logout', 'logout')->name('logout');
 });
