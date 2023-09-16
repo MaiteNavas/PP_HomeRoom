@@ -1,25 +1,31 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios'
-import {Link} from 'react-router-dom'
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+import NavBarAdmin from '../../../../components/navBarAdmin/NavBarAdmin';
 
 function IndexRoom(){
-    const endpoint = 'http://localhost:8000/api/admin'
 
-    const [rooms, setRooms] = useState([])
+    const endpoint = 'http://localhost:8000/api/admin';
+
+    const [rooms, setRooms] = useState([]);
+
     useEffect ( ()=> {
-        getAllRooms()
-    }, [])
-    const getAllRooms = async () => {
-        const response = await axios.get(`${endpoint}/room`)
-        setRooms(response.data)
-    }
-    const deleteRoom = async (id) => {
-       await axios.delete(`${endpoint}/room/${id}`)
-       getAllRooms()
-         
-    }
-  return (
+        getAllRooms();
+    }, []);
 
+    const getAllRooms = async () => {
+        const response = await axios.get(`${endpoint}/room`);
+        setRooms(response.data);
+    };
+
+    const deleteRoom = async (id) => {
+       await axios.delete(`${endpoint}/room/${id}`);
+       getAllRooms();     
+    };
+
+    return (
+    <>
+        <NavBarAdmin/>
         <div className="container fluid">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
@@ -75,8 +81,9 @@ function IndexRoom(){
                 </div>
             </div>   
         </div>
-  )
-}
+    </>
+    );
+};
 
-export default IndexRoom
+export default IndexRoom;
 

@@ -1,21 +1,29 @@
-import axios from 'axios'
-import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import NavBarAdmin from '../../../../components/navBarAdmin/NavBarAdmin';
 
 function CreateCustomer(){
-    const endpoint = 'http://localhost:8000/api/admin/customer'
-        const [name, setName] = useState('')
-        const [family_name, setFamilyName] = useState('')
-        const [email, setEmail] = useState('')
-        const [phone, setPhone] = useState('')
-        const [address, setAddress] = useState('')
-        const navigate = useNavigate()
-        const store = async (e) => {
-            e.preventDefault();
-            await axios.post(endpoint, {name: name, family_name: family_name, email: email, phone: phone, address: address})
-            navigate('/admin/customer')
-        }
-      return (
+
+    const endpoint = 'http://localhost:8000/api/admin/customer';
+
+    const [name, setName] = useState('');
+    const [family_name, setFamilyName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
+
+    const navigate = useNavigate();
+
+    const store = async (e) => {
+        e.preventDefault();
+        await axios.post(endpoint, {name: name, family_name: family_name, email: email, phone: phone, address: address});
+        navigate('/admin/customer');
+    };
+
+    return (
+    <>
+        <NavBarAdmin/>
         <div>
             <h2>Crear un cliente</h2>
             <form onSubmit={store}>
@@ -64,11 +72,11 @@ function CreateCustomer(){
                         className='form-control'
                     />
                 </div>
-                
                 <button type='submit' className='btn btn-success'>Guardar</button>
             </form>
         </div>
-      )
-}
+    </>   
+    );
+};
 
-export default CreateCustomer
+export default CreateCustomer;

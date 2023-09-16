@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import NavBarAdmin from '../../../../components/navBarAdmin/NavBarAdmin';
 
 function IndexCustomer(){
     
@@ -22,8 +23,9 @@ function IndexCustomer(){
        getAllCustomers();    
     };
 
-  return (
-
+    return (
+    <>
+        <NavBarAdmin/>
         <div className="container fluid">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
@@ -82,9 +84,9 @@ function IndexCustomer(){
             </div>
         </div>   
     </div>
-    
-  )
-}
+    </>                            
+    );
+};
 
-export default IndexCustomer
+export default IndexCustomer;
 

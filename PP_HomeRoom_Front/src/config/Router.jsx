@@ -8,11 +8,19 @@ import EditRoom from '../pages/admin/room/editRoom/EditRoom';
 import IndexCustomer from '../pages/admin/customer/indexCustomer/IndexCustomer';
 import CreateCustomer from '../pages/admin/customer/createCustomer/CreateCustomer';
 import EditCustomer from '../pages/admin/customer/editCustomer/EditCustomer';
+import Home from '../pages/home/Home';
+import Houses from '../pages/houses/Houses';
+import BookingCustomer from '../pages/booking/BookingCustomer';
+import BookingDates from '../pages/booking/BookingDates';
 
 const Router = () => {
     return(
         <BrowserRouter>
                 <Routes>
+                <Route path='/' element={ <Home/>} />
+                <Route path='/alojamientos' element={ <Houses/>} />
+                <Route path='/reservas' element={ <BookingCustomer/>} />
+                <Route path='/booking/dates/:id' element={ <BookingDates/>} />
                 <Route path='admin/house' element={ <IndexHouse/>} />
                 <Route path='admin/house/create' element={ <CreateHouse/>} />
                 <Route path='admin/house/edit/:id' element={ <EditHouse/>} />

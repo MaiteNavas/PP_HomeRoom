@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import NavBarAdmin from '../../../../components/navBarAdmin/NavBarAdmin';
 
 function IndexHouse(){
 
@@ -22,8 +23,9 @@ function IndexHouse(){
        getAllHouses();     
     };
 
-  return (
-
+    return (
+    <>
+        <NavBarAdmin/>
         <div className="container fluid">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
@@ -77,8 +79,9 @@ function IndexHouse(){
                 </div>
              </div>   
         </div>
-  )
-}
+    </>
+    );
+};
 
-export default IndexHouse
+export default IndexHouse;
 

@@ -1,13 +1,15 @@
 import './App.css';
 import Router from './config/Router';
 import NavBarAdmin from './components/navBarAdmin/NavBarAdmin';
+import Footer from './components/Footer';
  function App() {
 
   return (
     <>
         <div>
-        <NavBarAdmin></NavBarAdmin>
+        
         <Router/>
+        <Footer/>
       </div>
     
     </>
