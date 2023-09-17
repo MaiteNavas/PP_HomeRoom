@@ -11,4 +11,7 @@ class Customer extends Model
     protected $table = 'customer';
     protected $guarded = [];
     public $timestamps = false;
+    function booking(){
+        return $this->hasMany(Booking::class);
+    }
 }

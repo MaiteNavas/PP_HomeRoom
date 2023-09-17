@@ -19,7 +19,7 @@ return new class extends Migration
                 $table->string('name');
                 $table->string('description');
                 $table->decimal('price', 5, 2);
-                $table->string('room_img');
+                $table->string('room_img')->nullable();
                 $table->timestamps();
             });
   

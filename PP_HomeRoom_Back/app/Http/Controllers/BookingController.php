@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Room;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -20,7 +22,10 @@ class BookingController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        $rooms = Room::all();
+        return view('booking.create', compact('customers', 'rooms'));
+        
     }
 
     /**

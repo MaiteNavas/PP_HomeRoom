@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('city');
-            $table->string('house_img');   
+            $table->string('house_img')->nullable();   
 
         });
     }

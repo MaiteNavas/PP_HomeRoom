@@ -35,7 +35,6 @@ class RoomController extends Controller
     public function edit($id)
     {
         $room = Room::find($id);
-        $houses = House::all();
         
         return $room;
     }

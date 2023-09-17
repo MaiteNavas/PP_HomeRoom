@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 
 
@@ -29,6 +30,9 @@ Route::resource('admin/room',RoomController::class);
 
 Route::get('admin/customer/{id}/delete',[CustomerController::class, 'destroy'])->name('customer.delete');
 Route::resource('admin/customer',CustomerController::class);
+
+Route::get('admin/booking/{id}/delete',[BookingController::class, 'destroy'])->name('booking.delete');
+Route::resource('admin/booking',BookingController::class);
 //Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

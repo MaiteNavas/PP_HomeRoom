@@ -18,7 +18,7 @@
           <a class="nav-link active" aria-current="page" href="{{ route('room.index') }}">Habitaciones</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Reservas</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('booking.create') }}">Reservas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ route('customer.index') }}">Clientes</a>
