@@ -43,34 +43,31 @@ const Footer = () => {
     }}
     >
       <StackColumn>
-        <FooterTitle text={'address'} />
+        <FooterTitle text={'Home Room'} />
         <FooterLink 
-        text={'15th Louis St, london 92382, eng'} 
+        text={'Av Campón, 15, Salinas, Asturias'} 
         />
         <FooterLink 
-        text={'25 999-345-10800'} 
+        text={'654-333-333'} 
         />
         <FooterLink 
-        text={'info@housesales.com'} 
+        text={'info@homeroom.com'} 
         />
       </StackColumn>
       
       <StackColumn>
-        <FooterTitle text={'our services'} />
-        <FooterLink text={'buy house'} />
-        <FooterLink text={'sell house'} />
-        <FooterLink text={'rent house'} />
-        <FooterLink text={'build house'} />
-      </StackColumn>
-      <StackColumn>
-        <FooterTitle text={'our company'} />
-        <FooterLink text={'reporting'} />
-        <FooterLink text={'get in touch'} />
-        <FooterLink text={'management'} />
+        <FooterTitle text={'Servicios'} />
+        <FooterLink text={'Alojamientos'} />
+        <FooterLink text={'Habitaciones'} />
+        <FooterLink text={'Reservas'} />
+        <FooterLink text={'Actividades'} />
+        
+
       </StackColumn>
 
+
       <StackColumn>
-        <FooterTitle text={'hBSales'} />
+        <FooterTitle text={'Contacto'} />
         <Stack 
         direction='row' 
         width= '70px'
@@ -103,7 +100,7 @@ const Footer = () => {
         component='p'
         color= 'white' 
         >
-          &copy; 2022 HBSales Inc.
+          &copy; 2022 HomeRoom
         </Typography>
       </StackColumn>
     </BoxRow>

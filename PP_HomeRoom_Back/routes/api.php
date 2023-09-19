@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\HouseController;
-use App\Http\Controllers\Api\RoomController;
-use App\Http\Controllers\Api\CustomerController;
-use App\Http\Controllers\Api\LoginRegisterController;
+use App\Http\Controllers\HouseController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +18,13 @@ use App\Http\Controllers\Api\LoginRegisterController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/user', [AuthController::class, 'user']);
+});
 Route::controller(HouseController::class)->group(function (){
     Route::get('/admin/house', 'index');
     Route::post('/admin/house', 'store');
@@ -42,12 +45,4 @@ Route::controller(CustomerController::class)->group(function (){
     Route::get('/admin/customer/{id}', 'show');
     Route::put('/admin/customer/{id}', 'update');
     Route::delete('/admin/customer/{id}', 'destroy');
-});
-Route::controller(LoginRegisterController::class)->group(function() {
-    Route::get('/register', 'register')->name('register');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/login', 'login')->name('login');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::get('/admin', 'admin')->name('admin');
-    Route::post('/logout', 'logout')->name('logout');
 });
