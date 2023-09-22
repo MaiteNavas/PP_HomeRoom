@@ -1,41 +1,31 @@
-import React, { useState } from 'react';
-import axios from '../js/axios';
-import { useNavigate } from 'react-router-dom';
-import {  
-    Box,
-    Button,
-    Stack,
-    TextField,
-} from '@mui/material';
-import Title from '../atoms/Title'
-import Paragraph from '../atoms/Paragraph';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import axios from '../axios/axios';
 import { useAuth } from '../contexts/AuthContext';
 
-
-
-const Register = () => {
-
-
-
-    const { setUser } = useAuth();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [nameError, setNameError] = useState('');
-	const [emailError, setEmailError] = useState('');
-	const [passwordError, setPasswordError] = useState('');
-    const navigate = useNavigate();
-	
-	const register = async (e) => {
+export default function Register() {
+	const { setUser } = useAuth();
+	const [nameError, setNameError] = React.useState('');
+	const [emailError, setEmailError] = React.useState('');
+	const [passwordError, setPasswordError] = React.useState('');
+	// register user
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+		const { name, email, password, cpassword } = e.target.elements;
+		const body = {
+			name: name.value,
+			email: email.value,
+			password: password.value,
+			password_confirmation: cpassword.value,
+		};
 		try {
-			const resp = await axios.post('register', {name: name, email: email, password: password});
+			const resp = await axios.post('/register', body);
 			if (resp.status === 200) {
 				setUser(resp.data.user);
-				return  navigate('/login');
+				return <Navigate to="/profile" />;
 			}
 		} catch (error) {
-            if (error.response.status === 422) {
+			if (error.response.status === 422) {
 				console.log(error.response.data.errors);
 				if (error.response.data.errors.name) {
 					setNameError(error.response.data.errors.name[0]);
@@ -54,121 +44,125 @@ const Register = () => {
 				}
 			}
 		}
-	}
+	};
 
-    return (
-        <Stack 
-        component='section'
-        direction="column"
-        justifyContent= 'center'
-        alignItems='center'
-        sx={{
-            py: 10,
-            px: 2,
-        }}
-        >
-            <Title 
-            text={
-                'Registrarse'
-                } 
-            textAlign={'center'}
-            />
-            <Paragraph 
-            text={
-                'Introduce tus nombre, correo electrónico y contraseña'
-            }
-            maxWidth = {'sm'}
-            mx={0}
-            textAlign={'center'}
-            color={'#7b7b7b'}
-            />
+	return (
+<>
 
-            <Box 
-            component="form" 
-            noValidate 
-            onSubmit={register} 
-            sx={{ 
-                mt: 1,
-                py: 2
-            }}>
-            <Paragraph 
-                    text={nameError}
-                    maxWidth = {'sm'}
-                    mx={0}
-                    textAlign={'center'}
-                    color={'red'}
-                />
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="name"
-                    label="Nombre"
-                    name="name"
-                    autoComplete="name"
-                    autoFocus
-                    onChange={ (e)=> setName(e.target.value)}
-                />
-                <Paragraph 
-                    text={emailError}
-                    maxWidth = {'sm'}
-                    mx={0}
-                    textAlign={'center'}
-                    color={'red'}
-                />
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Correo electrónico"
-                    name="email"
-                    autoComplete="email"
-                    autoFocus
-                    onChange={ (e)=> setEmail(e.target.value)}
-                />
-                <Paragraph 
-                    text={passwordError}
-                    maxWidth = {'sm'}
-                    mx={0}
-                    textAlign={'center'}
-                    color={'red'}
-                />
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    type="password"
-                    id="password"
-                    label="Contraseña"
-                    name="password"
-                    autoComplete="email"
-                    autoFocus
-                    onChange={ (e)=> setPassword(e.target.value)}
-                />
- 
-                <Button 
-                variant="contained" 
-                fullWidth
-                type="submit"
-                size="medium"
-                sx= {{ 
-                    fontSize: '0.9rem',
-                    textTransform: 'capitalize', 
-                    py: 2,
-                    mt: 3, 
-                    mb: 2,
-                    borderRadius: 0,
-                    backgroundColor: '#14192d',
-                    "&:hover": {
-                        backgroundColor: '#1e2a5a',
-                    }
-                }}
-                >
-                    Enviar
-                </Button>
-            </Box>
-        </Stack>
-    );
-};
-export default Register;
+
+
+
+		
+		<section className="bg-gray-50 dark:bg-gray-900">
+			<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+				<a
+					href="#"
+					className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+					<img
+						className="w-8 h-8 mr-2"
+						src="https://dcodemania.com/img/logo.svg"
+						alt="logo"
+					/>
+					DCodemania
+				</a>
+				<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+					<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+						<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+							Create and account
+						</h1>
+						<form
+							className="space-y-4 md:space-y-6"
+							action="#"
+							method="post"
+							onSubmit={handleSubmit}>
+							<div>
+								<label
+									htmlFor="name"
+									className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+									Full Name
+								</label>
+								<input
+									type="text"
+									name="name"
+									id="name"
+									className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="Jhone Doe"
+									required
+								/>
+								{nameError && (
+									<p className="text-sm text-red-600">{nameError}</p>
+								)}
+							</div>
+							<div>
+								<label
+									htmlFor="email"
+									className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+									Your email
+								</label>
+								<input
+									type="email"
+									name="email"
+									id="email"
+									className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="name@company.com"
+									required
+								/>
+								{emailError && (
+									<p className="text-sm text-red-600">{emailError}</p>
+								)}
+							</div>
+							<div>
+								<label
+									htmlFor="password"
+									className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+									Password
+								</label>
+								<input
+									type="password"
+									name="password"
+									id="password"
+									placeholder="••••••••"
+									className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									required
+								/>
+								{passwordError && (
+									<p className="text-sm text-red-600">{passwordError}</p>
+								)}
+							</div>
+							<div>
+								<label
+									htmlFor="cpassword"
+									className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+									Confirm password
+								</label>
+								<input
+									type="password"
+									name="cpassword"
+									id="cpassword"
+									placeholder="••••••••"
+									className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									required
+								/>
+							</div>
+
+							<button
+								type="submit"
+								className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+								Create an account
+							</button>
+							<p className="text-sm font-light text-gray-500 dark:text-gray-400">
+								Already have an account?{' '}
+								<Link
+									to="/"
+									className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+									Login here
+								</Link>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		</>
+	);
+}

@@ -1,110 +1,111 @@
-import React from 'react'
-import { 
-  Box, 
-  Stack, 
-  styled, 
-  Typography,
-} from '@mui/material'
-import Link from '@mui/material/Link';
-import FooterTitle from '../atoms/FooterTitle'
-import FooterLink from '../atoms/FooterLink'
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import React from "react";
 
-const Footer = () => {
-
-  const StackColumn = styled(Stack) (() => ({
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flex: 1,
-    gap: 8,
-    textAlign: 'center',
-  }));
-
-  const BoxRow = styled(Box) (({ theme }) => ({
-    display: 'flex',
-    flexDirection: 'row',
-    backgroundColor: '#213555',
-    flex: 1,
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-      gap: 30,
-    }
-  }));
-
+export default function Footer() {
   return (
-    
-    <BoxRow 
-    component = 'footer'
-    sx={{
-      py: 4,
-      px: 2,
-    }}
-    >
-      <StackColumn>
-        <FooterTitle text={'Home Room'} />
-        <FooterLink 
-        text={'Av Campón, 15, Salinas, Asturias'} 
-        />
-        <FooterLink 
-        text={'654-333-333'} 
-        />
-        <FooterLink 
-        text={'info@homeroom.com'} 
-        />
-      </StackColumn>
-      
-      <StackColumn>
-        <FooterTitle text={'Servicios'} />
-        <FooterLink text={'Alojamientos'} />
-        <FooterLink text={'Habitaciones'} />
-        <FooterLink text={'Reservas'} />
-        <FooterLink text={'Actividades'} />
-        
-
-      </StackColumn>
-
-
-      <StackColumn>
-        <FooterTitle text={'Contacto'} />
-        <Stack 
-        direction='row' 
-        width= '70px'
-        maxWidth='100%'
-        justifyContent='space-between'
+    <footer className="relative bg-gray-300 pt-8 pb-6">
+      <div
+        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        style={{ height: "80px" }}
+      >
+        <svg
+          className="absolute bottom-0 overflow-hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          y="0"
         >
-          <Link href="#" variant="body2" 
-          sx={{
-            color: 'white',
-            "&:hover": {
-              color: 'lightgrey',
-            }
-          }}
-          >
-            <InstagramIcon />  
-          </Link> 
-          <Link href="#"variant="body2" 
-          sx={{
-            color: 'white',
-            "&:hover": {
-              color: 'lightgrey',
-            }
-          }}
-          >
-            <FacebookIcon />
-          </Link> 
-        </Stack>
-        <Typography 
-        variant='caption'
-        component='p'
-        color= 'white' 
-        >
-          &copy; 2022 HomeRoom
-        </Typography>
-      </StackColumn>
-    </BoxRow>
-  )
+          <polygon
+            className="text-gray-300 fill-current"
+            points="2560 0 2560 100 0 100"
+          ></polygon>
+        </svg>
+      </div>
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap">
+          <div className="w-full lg:w-6/12 px-4">
+            <h4 className="text-3xl font-semibold">
+              Home Room
+            </h4>
+            <p className="text-lg mt-0 mb-2 text-gray-500">
+              Alquiler de habitaciones vacacionales
+            </p>
+            <div className="mt-6">
+              <button
+                className="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i className="flex fab fa-twitter"></i>
+              </button>
+              <button
+                className="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i className="flex fab fa-facebook-square"></i>
+              </button>
+              <button
+                className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i className="flex fab fa-dribbble"></i>
+              </button>
+              <button
+                className="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i className="flex fab fa-github"></i>
+              </button>
+            </div>
+          </div>
+          <div className="w-full lg:w-6/12 px-4">
+            <div className="flex flex-wrap items-top mb-6">
+              <div className="w-full lg:w-4/12 px-4 ml-auto">
+                <span className="block uppercase text-gray-600 text-sm font-semibold mb-2">
+                  LINKS
+                </span>
+                <ul className="list-unstyled">
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://www.creative-tim.com/presentation">Alojamientos
+                    </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://blog.creative-tim.com">Habitaciones
+                    </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://www.github.com/creativetimofficial">Contacto
+                    </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://www.creative-tim.com/bootstrap-themes/free">Login
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+              <div className="w-full lg:w-4/12 px-4">
+                <span className="block uppercase text-gray-600 text-sm font-semibold mb-2">
+                  LOCALIZACIÓN
+                </span>
+                <ul className="list-unstyled">
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                    href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">Av.Campón, 14, Salinas, Asturias
+                  </a>
+                  </li>
+                  
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }
-
-export default Footer

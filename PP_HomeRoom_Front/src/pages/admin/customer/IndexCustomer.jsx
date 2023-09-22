@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import axios from '../../../axios/axios';
 import {Link} from 'react-router-dom';
-import NavBarAdmin from '../../../components/NavBar/NavBarAdmin';
+
 
 function IndexCustomer(){
-    
-    const endpoint = 'http://localhost:8000/api/admin';
 
     const [customers, setCustomers] = useState([]);
 
@@ -14,77 +12,72 @@ function IndexCustomer(){
     }, []);
 
     const getAllCustomers = async () => {
-        const response = await axios.get(`${endpoint}/customer`);
+        const response = await axios.get('admin/customer');
         setCustomers(response.data);
     };
 
     const deleteCustomer = async (id) => {
-       await axios.delete(`${endpoint}/customer/${id}`);
-       getAllCustomers();    
+       await axios.delete(`admin/customer/${id}`);
+       getAllCustomers();     
     };
 
     return (
     <>
-        <NavBarAdmin/>
-        <div className="container fluid">
-            <div className="card shadow mb-4">
-                <div className="card-header py-3">
-                <h6 className="m-0 font-weight-bold text-primary">CLIENTES
-                <Link to="./create" className="btn btn-success btn-sm mt-1 mb-1 text-white">Añadir cliente</Link>
-                </h6>   
-            </div>
-            <div className="card-body">
-                <div className="table-responsive">
-                <table className="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead className='bg-primary text-white'>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Email</th>
-                                <th>Teléfono</th>
-                                <th>Dirección</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { customers.map( (customer) => (
-                                <tr key={customer.id}>
-                                    <td>{customer.name}</td>
-                                    <td>{customer.family_name}</td>
-                                    <td>{customer.email}</td>
-                                    <td>{customer.phone}</td>
-                                    <td>{customer.address}</td>
-
-                                    <td>
-                                        <Link to={`/admin/customer/edit/${customer.id}`} className="btn btn-primary btn-sm">Editar</Link>  
-                                        <a className="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</a>
-                                        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div className="modal-dialog">
-                                                <div className="modal-content">
-                                                    <div className="modal-header">
-                                                        <h5 className="modal-title fs-5" id="exampleModalLabel">¿Estás seguro de eliminar el cliente?</h5>
-                                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div className="modal-body">
-                                                        Una vez eliminado no se podrá recuperar.
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                        <button type="button" onClick={ ()=>deleteCustomer(customer.id)} className='btn btn-danger'>Eliminar</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}                
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>   
-    </div>
-    </>                            
+    
+    <section className="flex flex-col w-full items-center">
+    <button type="button" className="text-white my-4 bg-[#213555] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><Link to={'/admin/customer/create'}>+ Añadir cliente</Link></button>
+        <table className="w-4/5 text-sm text-left text-gray-500 dark:text-gray-400  mx-8 shadow-md sm:rounded-lg">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" className="px-6 py-3">
+                        NOMBRE
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        APELLIDOS
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        EMAIL
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        TELÉFONO
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        DIRECCIÓN
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        ACCIÓN
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            { customers.map( (customer) => (
+                <tr key={customer.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      {customer.name}
+                    </th>
+                    <td className="px-6 py-4">
+                    {customer.family_name}
+                    </td>
+                    <td className="px-6 py-4">
+                    {customer.email}
+                    </td>
+                    <td className="px-6 py-4">
+                    {customer.phone}
+                    </td>
+                    <td className="px-6 py-4">
+                    {customer.address}
+                    </td>
+                    
+                    <td class="px-6 py-4 text-left">
+                    <button type="button" className="text-white bg-[#213555] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><Link to={`/admin/customer/edit/${customer.id}`}>Editar</Link></button>
+                    <button type="button" onClick={ ()=>deleteCustomer(customer.id)} className="text-white bg-red-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Eliminar</button>  
+                    </td>
+                </tr>
+                 ))}   
+            </tbody>
+        </table>
+    </section>
+    </>
     );
 };
 

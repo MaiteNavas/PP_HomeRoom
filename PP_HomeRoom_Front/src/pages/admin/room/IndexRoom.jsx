@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import axios from '../../../axios/axios';
 import {Link} from 'react-router-dom';
-import NavBarAdmin from '../../../components/NavBar/NavBarAdmin';
+
 
 function IndexRoom(){
-
-    const endpoint = 'http://localhost:8000/api/admin';
 
     const [rooms, setRooms] = useState([]);
 
@@ -14,73 +12,75 @@ function IndexRoom(){
     }, []);
 
     const getAllRooms = async () => {
-        const response = await axios.get(`${endpoint}/room`);
-        setRooms(response.data);
+        try {
+            const response = await axios.get('admin/room');
+            if (Array.isArray(response.data.data)) {
+                setRooms(response.data.data);
+            } else {
+                console.error('La respuesta de la API no es un array válido.', response.data);
+            }
+        } catch (error) {
+            console.error('Error al obtener habitaciones desde la API:', error);
+        }
     };
 
     const deleteRoom = async (id) => {
-       await axios.delete(`${endpoint}/room/${id}`);
+       await axios.delete(`admin/room/${id}`);
        getAllRooms();     
     };
 
     return (
     <>
-        <NavBarAdmin/>
-        <div className="container fluid">
-            <div className="card shadow mb-4">
-                <div className="card-header py-3">
-                    <h6 className="m-0 font-weight-bold text-primary">HABITACIONES
-                        <Link to="./create" className="float-right btn btn-success btn-sm">Añadir habitación</Link>
-                    </h6>  
-                </div>
-                <div className="card-body">
-                    <div className="table-responsive">
-                        <table className="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead className='bg-primary text-white'>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Alojamiento</th>
-                                    <th>Precio</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                { rooms.map( (room) => (
-                                    <tr key={room.id}>
-                                        <td>{room.name}</td>
-                                        <td>{room.description}</td>
-                                        <td>{room.id_house}</td>
-                                        <td>{room.price}</td>
-                                        <td>
-                                            <Link to={`/admin/room/edit/${room.id}`} className="btn btn-primary btn-sm">Editar</Link>  
-                                            <button className="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</button>
-                                            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div className="modal-dialog">
-                                                    <div className="modal-content">
-                                                        <div className="modal-header">
-                                                            <h5 className="modal-title fs-5" id="exampleModalLabel">¿Estás seguro de eliminar la habitación?</h5>
-                                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div className="modal-body">
-                                                            Una vez eliminado no se podrá recuperar.
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                            <button onClick={ ()=>deleteRoom(house.id)} className='btn btn-danger'>Eliminar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>   
-        </div>
+    
+    <section className="flex flex-col w-full items-center">
+    <button type="button" className="text-white my-4 bg-[#213555] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          <Link to="/admin/room/create">+ Añadir habitación</Link>
+        </button>
+        <table className="w-4/5 text-sm text-left text-gray-500 dark:text-gray-400  mx-8 shadow-md sm:rounded-lg">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" className="px-6 py-3">
+                        NOMBRE
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        DESCRIPCIÓN
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        ALOJAMIENTO
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        PRECIO
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        ACCIÓN
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            { rooms.map((room) => (
+                <tr key={room.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      {room.name}
+                    </th>
+                    <td className="px-6 py-4">
+                    {room.description}
+                    </td>
+                    <td className="px-6 py-4">
+                    {room.house.name}
+                    </td>
+                    <td className="px-6 py-4">
+                    {room.price}
+                    </td>
+                    <td className="px-6 py-4 text-left">
+                    <button type="button" className="text-white bg-[#213555] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><Link to={`/admin/room/edit/${room.id}`}>Editar</Link></button>
+                    <button type="button" onClick={ ()=>deleteRoom(room.id)} className="text-white bg-red-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Eliminar</button>  
+                    </td>
+                </tr>
+                 )
+                  )}   
+            </tbody>
+        </table>
+    </section>
     </>
     );
 };

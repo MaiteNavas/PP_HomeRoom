@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\House;
 use Illuminate\Http\Request;
 
@@ -11,49 +12,38 @@ class HouseController extends Controller
     {
         $houses = House::all();
 
-        return view('house.index', compact('houses'));
-    }
-    public function create()
-    {
-        return view('house.create');
+        return $houses;
     }
     public function store(Request $request)
     {
-        House::create([
+        $house = House::create([
             'name' => $request->name,
             'description' => $request->description,
             'city' => $request->city,
         ]);
 
-        return redirect('admin/house');
+        return $house;
     }
     public function show($id)
     {
         $house = House::find($id);
 
-        return view('house.show', compact('house'));
+        return $house;
     }
-
-    public function edit($id)
+    public function update(Request $request)
     {
-        $house = House::find($id);
-        
-        return view('house.edit', compact('house'));
-    }
-    public function update(Request $request, House $house)
-    {
+        $house = House::findorFail($request->id);
         $house->update([
             'name' => $request->name,
             'description' => $request->description,
             'city' => $request->city,
         ]);
-
-        return redirect('admin/house');
+        return $house;
     }
     public function destroy($id)
     {
-        House::where('id',$id)->delete();
+        $house = House::where('id',$id)->delete();
 
-        return redirect('admin/house');
+        return $house;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Room;
 use App\Models\House;
 use Illuminate\Http\Request;
@@ -10,42 +11,36 @@ class RoomController extends Controller
 {
     public function index()
     {
-        $rooms = Room::all();
+        $rooms = Room::with('house')->get();
 
-        return view('room.index', compact('rooms'));
-    }
-    public function create()
-    {
-        $houses = House::all();
-        return view('room.create', compact('houses'));
+        return response()->json(['data' => $rooms], 200);
     }
     public function store(Request $request)
     {
-        Room::create([
-            'id_house' => $request->id_house,
+        $room = Room::create([
             'name' => $request->name,
             'description' => $request->description,
-            'price' => $request->price,
-            
+            'id_house' => $request->id_house,
+            'price' => $request->price,   
         ]);
 
-        return redirect('admin/room');
+        return $room;
     }
     public function show($id)
     {
         $room = Room::find($id);
 
-        return view('room.show', compact('room'));
+        return $room;
     }
     public function edit($id)
     {
         $room = Room::find($id);
-        $houses = House::all();
         
-        return view('room.edit', compact('room','houses'));
+        return $room;
     }
-    public function update(Request $request, Room $room)
+    public function update(Request $request)
     {
+        $room = House::findorFail($request->id);
         $room->update([
             'id_house' => $request->id_house,
             'name' => $request->name,
@@ -53,12 +48,12 @@ class RoomController extends Controller
             'price' => $request->price,   
         ]);
 
-        return redirect('admin/room');
+        return $room;
     }
     public function destroy($id)
     {
-        Room::where('id',$id)->delete();
+        $room = Room::where('id',$id)->delete();
 
-        return redirect('admin/room');
+        return $room;
     }
 }
