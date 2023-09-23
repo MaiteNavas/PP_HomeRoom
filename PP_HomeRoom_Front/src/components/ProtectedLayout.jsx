@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 import axios from '../axios/axios';
 import { useAuth } from '../contexts/AuthContext';
 import Logo from "../assets/img/RentARoom.png";
-import { Collapse } from 'flowbite';
 
 export default function DefaultLayout() {
 	const { user, setUser } = useAuth();
@@ -53,7 +51,7 @@ export default function DefaultLayout() {
             </a>
             <div className="flex md:order-2">
                 
-                <button type="button" className="text-white bg-[#213555] hover:bg-sky-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">								
+                <button type="button" className="w-full text-white bg-[#213555] hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">								
                     <a onClick={handleLogout}>Logout</a>
                 </button>
                 <button data-collapse-toggle="navbar-dropdown" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">

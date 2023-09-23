@@ -16,6 +16,9 @@ import EditRoom from '../pages/admin/room/EditRoom';
 import IndexCustomer from '../pages/admin/customer/IndexCustomer';
 import CreateCustomer from '../pages/admin/customer/CreateCustomer';
 import EditCustomer from '../pages/admin/customer/EditCustomer';
+import BookingCustomer from '../pages/booking/BookingCustomer';
+import BookingDates from '../pages/booking/BookingDates';
+import BookingSuccess from '../pages/booking/BookingSuccess';
 
 
 const router = createBrowserRouter([
@@ -38,6 +41,18 @@ const router = createBrowserRouter([
 			{
 				path: '/room',
 				element: <Rooms/>,
+			},
+			{
+				path: '/booking',
+				element: <BookingCustomer/>,
+			},
+			{
+				path: '/booking/dates/:id',
+				element: <BookingDates/>,
+			},
+			{
+				path: '/booking/success/:id',
+				element: <BookingSuccess/>,
 			},
 			{
 				path: '/contact',

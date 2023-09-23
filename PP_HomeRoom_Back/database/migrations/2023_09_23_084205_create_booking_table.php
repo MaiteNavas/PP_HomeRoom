@@ -17,11 +17,13 @@ return new class extends Migration
             $table->foreign('id_customer')->references('id')->on('customer');
             $table->unsignedBigInteger('id_room');
             $table->foreign('id_room')->references('id')->on('room');
-            $table->string('checkin_date');
-            $table->string('checkout_date');
+            $table->unsignedBigInteger('id_booking_status')->default(1);
+            $table->foreign('id_booking_status')->references('id')->on('booking_status');
+            $table->date('checkin_date');
+            $table->date('checkout_date');
             $table->string('total_adults');
             $table->string('total_children');
-            $table->string('precio');
+            $table->string('price');
             $table->timestamps();
         });
     }

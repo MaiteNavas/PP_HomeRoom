@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,11 @@ Route::controller(CustomerController::class)->group(function (){
     Route::get('/admin/customer/{id}', 'show');
     Route::put('/admin/customer/{id}', 'update');
     Route::delete('/admin/customer/{id}', 'destroy');
+});
+Route::controller(BookingController::class)->group(function (){
+    Route::get('/admin/booking', 'index');
+    Route::post('/admin/booking', 'store');
+    Route::get('/admin/booking/{id}', 'show');
+    Route::put('/admin/booking/{id}', 'update');
+    Route::delete('/admin/booking/{id}', 'destroy');
 });
