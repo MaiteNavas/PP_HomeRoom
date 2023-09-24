@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 
+
 class BookingController extends Controller
 {
+
     public function index()
     {
-        $bookings = Booking::all();
-
-        return $bookings;
+            $bookings = Booking::with('room', 'customer', 'booking_status')->get();
+    
+            return response()->json(['data' => $bookings], 200);
     }
+    
     public function store(Request $request)
     {
         $booking = Booking::create([

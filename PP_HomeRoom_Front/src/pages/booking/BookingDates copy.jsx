@@ -13,6 +13,11 @@ const BookingDates = () => {
   const [name, setName] = useState('');
   const [family_name, setFamilyName] = useState('');
   const [showError, setShowError] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [selectedRoomPrice, setSelectedRoomPrice] = useState(0);
+  const [selectedStartDate, setSelectedStartDate] = useState(null);
+  const [selectedEndDate, setSelectedEndDate] = useState(null);
+  const [diffDays, setDiffDays] = useState(0);
 
   const navigate = useNavigate();
 
@@ -45,24 +50,74 @@ const BookingDates = () => {
     }
   };
 
+  const handleRoomChange = (roomId) => {
+    const selectedRoom = rooms.find((room) => room.id === roomId);
+
+    if (selectedRoom) {
+      setSelectedRoomPrice(selectedRoom.price);
+    } else {
+      setSelectedRoomPrice(0);
+    }
+  };
+
+  const handleCheckinDateChange = (e) => {
+    const startDate = new Date(e.target.value);
+    const endDate = new Date(checkout_date);
+
+    if (!isNaN(startDate) && !isNaN(endDate) && startDate <= endDate) {
+      const oneDay = 24 * 60 * 60 * 1000; // 1 día en milisegundos
+      const calculatedDiffDays = Math.round((endDate - startDate) / oneDay);
+
+      setCheckinDate(e.target.value);
+      setDiffDays(calculatedDiffDays);
+    } else {
+      setShowError(true);
+    }
+  };
+
+  const handleCheckoutDateChange = (e) => {
+    const startDate = new Date(checkin_date);
+    const endDate = new Date(e.target.value);
+
+    if (!isNaN(startDate.getTime()) && !isNaN(endDate.getTime()) && startDate <= endDate) {
+      const oneDay = 24 * 60 * 60 * 1000; // 1 día en milisegundos
+      const calculatedDiffDays = Math.round((endDate - startDate) / oneDay);
+
+      setCheckoutDate(e.target.value);
+      setDiffDays(calculatedDiffDays);
+    } else {
+      setShowError(true);
+    }
+  };
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [selectedRoomPrice, diffDays]);
+
+  const calculateTotalPrice = () => {
+    const roomPrice = parseFloat(selectedRoomPrice);
+    
+    if (!isNaN(roomPrice) && diffDays > 0) {
+      const totalPrice = diffDays * roomPrice;
+      setShowError(false);
+      setTotalPrice(totalPrice);
+    } else {
+      setTotalPrice(0);
+    }
+  };
+
   const store = async (e) => {
     e.preventDefault();
-    if (new Date(checkout_date) <= new Date(checkin_date)) {
-        setShowError(true);
-        return; 
-      }
 
-    const response = await axios.post('admin/booking', {
+    await axios.post('admin/booking', {
       id_customer: id_customer,
       id_room: id_room,
       checkin_date: checkin_date,
       checkout_date: checkout_date,
       total_adults: total_adults,
       total_children: total_children,
-       
     });
-    const bookingId = response.data.id;
-    navigate(`/booking/success/${id_customer}/${bookingId}`);
+    navigate(`/booking/success/${id_customer}`);
   };
 
   return (
@@ -82,13 +137,13 @@ const BookingDates = () => {
             <form className="space-y-4 md:space-y-6" method="post" onSubmit={store}>
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="room"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   {name} {family_name}
                 </label>
                 <input
-                  value={id_customer}
+                  value={id}
                   type="text"
                   name="id_customer"
                   id="name"
@@ -108,6 +163,7 @@ const BookingDates = () => {
                   name="id_room"
                   onChange={(e) => {
                     setIdRoom(e.target.value);
+                    handleRoomChange(e.target.value);
                   }}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#213555] focus:border-[#213555] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
@@ -131,7 +187,7 @@ const BookingDates = () => {
                   name="checkin_date"
                   id="checkin_date"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#213555] focus:border-[#213555] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  onChange={(e) => setCheckinDate(e.target.value)}
+                  onChange={handleCheckinDateChange}
                   required
                 />
               </div>
@@ -152,7 +208,7 @@ const BookingDates = () => {
                   name="checkout_date"
                   id="checkout_date"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#213555] focus:border-[#213555] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  onChange={(e) => setCheckoutDate(e.target.value)}
+                  onChange={handleCheckoutDateChange}
                   required
                 />
               </div>
@@ -188,7 +244,27 @@ const BookingDates = () => {
                   required
                 />
               </div>
-
+              <div>
+                <label
+                  htmlFor="price"
+                  className="block mb-2 text-sm font-medium text-[#213555] dark:text-white"
+                >
+                  Precio
+                </label>
+                <input
+                  type="text"
+                  name="price"
+                  id="price"
+                  value={totalPrice}
+                  readOnly
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#213555] focus:border-[#213555] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required
+                />
+              </div>
+              <div>
+                <p>Noches: {diffDays}</p>
+                <p>Precio total: {totalPrice} €</p>
+              </div>
               <button
                 type="submit"
                 className="w-full text-white bg-[#213555] hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"

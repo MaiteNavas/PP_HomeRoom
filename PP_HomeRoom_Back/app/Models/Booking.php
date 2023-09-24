@@ -23,12 +23,12 @@ class Booking extends Model
     ];
 
     function booking_status(){
-        return $this->belongsTo(BookingStatus::class,'id_boking_status');
+        return $this->belongsTo(BookingStatus::class,'id_booking_status');
     }
     function customer(){
         return $this->belongsTo(Customer::class,'id_customer');
     }
     function room(){
-        return $this->belongsTo(BookingStatus::class,'room');
+        return $this->belongsTo(Room::class,'id_room');
     }
 }

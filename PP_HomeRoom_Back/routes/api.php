@@ -6,6 +6,7 @@ use App\Http\Controllers\HouseController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +53,11 @@ Route::controller(BookingController::class)->group(function (){
     Route::get('/admin/booking/{id}', 'show');
     Route::put('/admin/booking/{id}', 'update');
     Route::delete('/admin/booking/{id}', 'destroy');
+});
+Route::controller(BookingStatusController::class)->group(function (){
+    Route::get('/admin/booking_status', 'index');
+    Route::post('/admin/booking_status', 'store');
+    Route::get('/admin/booking_status/{id}', 'show');
+    Route::put('/admin/booking_status/{id}', 'update');
+    Route::delete('/admin/booking_status/{id}', 'destroy');
 });
