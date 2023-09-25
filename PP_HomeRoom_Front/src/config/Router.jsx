@@ -21,6 +21,8 @@ import BookingDates from '../pages/booking/BookingDates';
 import BookingSuccess from '../pages/booking/BookingSuccess';
 import IndexBooking from '../pages/admin/booking/IndexBooking';
 import EditBooking from '../pages/admin/booking/EditBooking';
+import ShowCustomer from '../pages/admin/customer/ShowCustomer';
+import Calendar from '../pages/admin/calendar/Calendar';
 
 
 const router = createBrowserRouter([
@@ -107,12 +109,20 @@ const router = createBrowserRouter([
 				element: <EditCustomer/>,
 			},
 			{
+				path: '/admin/customer/show/:id',
+				element: <ShowCustomer/>,
+			},
+			{
 				path: '/admin/booking',
 				element: <IndexBooking/>,
 			},
 			{
 				path: '/admin/booking/edit/:id',
 				element: <EditBooking/>,
+			},
+			{
+				path: '/admin/calendar',
+				element: <Calendar/>,
 			},
 
 		],

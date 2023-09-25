@@ -65,17 +65,12 @@ export default function Home() {
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
                   Alojamientos
                 </h3>
-                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                  Nuestros alojamientos están equipados completamente para que no falta de nada
-                </p>
+
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                  The kit comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and
-                  you're good to go. Just make sure you enable them first via
-                  HASTA AQUI CARD 1
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                 </p>
                 <a
-                  href="/alojamientos"
+                  href="/house"
                   className="font-bold text-gray-800 mt-8"
                 >
                   Ver Alojamientos
@@ -85,7 +80,7 @@ export default function Home() {
               
 
               <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ">
+                <div className="relative flex flex-col min-w-0 break-words bg-[#213555] w-full mb-6 shadow-lg rounded-lg ">
                   <img
                     alt="..."
                     src={House1}
@@ -104,17 +99,10 @@ export default function Home() {
                     >
                       <polygon
                         points="-30,95 583,95 583,65"
-                        className="text-pink-600 fill-current"
+                        className="text-[#213555] fill-current"
                       ></polygon>
                     </svg>
-                    <h4 className="text-xl font-bold text-black">
-                      Top Notch Services
-                    </h4>
-                    <p className="text-md font-light mt-2 text-black">
-                      The Arctic Ocean freezes every winter and much of the
-                      sea-ice then thaws every summer, and that process will
-                      continue whatever happenssss.
-                    </p>
+                    
                   </blockquote>
                 </div>
               </div>
@@ -122,7 +110,7 @@ export default function Home() {
 
               <div className="flex flex-wrap items-center mt-10">
               <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ">
+                <div className="relative flex flex-col min-w-0 break-words bg-[#213555] w-full mb-6 shadow-lg rounded-lg ">
                 <img
                     alt="..."
                     src={House2}
@@ -141,17 +129,9 @@ export default function Home() {
                     >
                       <polygon
                         points="-30,95 583,95 583,65"
-                        className="text-pink-600 fill-current"
+                        className="text-[#213555] fill-current"
                       ></polygon>
                     </svg>
-                    <h4 className="text-xl font-bold text-black">
-                      Top Notch Services
-                    </h4>
-                    <p className="text-md font-light mt-2 text-black">
-                      The Arctic Ocean freezes every winter and much of the
-                      sea-ice then thaws every summer, and that process will
-                      continue whatever happens.
-                    </p>
                   </blockquote>
                 </div>
               </div>
@@ -160,17 +140,11 @@ export default function Home() {
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
                   Habitaciones
                 </h3>
-                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                  Nuestros alojamientos están equipados completamente para que no falta de nada
-                </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                  The kit comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and
-                  you're good to go. Just make sure you enable them first via
-                  JavaScriptCARD 2.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                 </p>
                 <a
-                  href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
+                  href="/room"
                   className="font-bold text-gray-800 mt-8"
                 >
                   Ver habitaciones
@@ -218,9 +192,9 @@ export default function Home() {
                     Surf
                   </h3>
                   <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                    The extension comes with three pre-built pages to help you
-                    get started faster. You can change the text and images and
-                    you're good to go.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                   </p>
                   
                 </div>
@@ -238,9 +212,9 @@ export default function Home() {
                     Senderismo
                   </h3>
                   <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                    The extension comes with three pre-built pages to help you
-                    get started faster. You can change the text and images and
-                    you're good to go.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                   </p>
                   
                 </div>
@@ -272,9 +246,9 @@ export default function Home() {
                     Cultura
                   </h3>
                   <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                    The extension comes with three pre-built pages to help you
-                    get started faster. You can change the text and images and
-                    you're good to go.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                   </p>
                   
                 </div>

@@ -51,6 +51,7 @@ Route::controller(BookingController::class)->group(function (){
     Route::get('/admin/booking', 'index');
     Route::post('/admin/booking', 'store');
     Route::get('/admin/booking/{id}', 'show');
+    Route::get('/admin/booking/customer/{id}', 'showByCustomer');
     Route::put('/admin/booking/{id}', 'update');
     Route::delete('/admin/booking/{id}', 'destroy');
 });

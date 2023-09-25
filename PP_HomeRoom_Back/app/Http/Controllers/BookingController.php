@@ -58,8 +58,8 @@ class BookingController extends Controller
     }
     public function showByCustomer($id_customer)
     {
-        $booking = Booking::find($id_customer)->where('id_customer',$id_customer);
+        $bookings = Booking::where('id_customer', $id_customer)->with('room', 'customer', 'booking_status')->get();
 
-        return $booking;
+        return response()->json(['data' => $bookings], 200);
     }
 }
