@@ -11,6 +11,6 @@ class BookingStatusController extends Controller
     {
         $bookings_status = BookingStatus::all();
 
-        return $bookings_status;
+        return response()->json(['data' => $bookings_status], 200);
     }
 }

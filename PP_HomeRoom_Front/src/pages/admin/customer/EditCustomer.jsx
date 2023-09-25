@@ -43,7 +43,7 @@ function EditCustomer(){
 				<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <button type="button" className="text-white bg-[#213555] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><Link to={'/admin/room'}>Volver</Link></button>
                     <h1 className="text-xl font-semi-bold leading-tight tracking-tight text-[#213555] md:text-2xl dark:text-white">
-                        Editar cliente: {name} {family_name}
+                        Editar reserva: {name} {family_name}
                     </h1>
                     <form
                         className="space-y-4 md:space-y-6"

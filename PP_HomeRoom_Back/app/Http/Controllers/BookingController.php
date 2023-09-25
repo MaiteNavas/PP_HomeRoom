@@ -40,7 +40,6 @@ class BookingController extends Controller
     {
         $booking = Booking::findorFail($request->id);
         $booking->update([
-            'id_customer' => $request->id_customer,
             'id_room' => $request->id_room,
             'id_booking_status' => $request->id_booking_status,
             'checkin_date' => $request->checkin_date,
@@ -54,6 +53,12 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $booking = Booking::where('id',$id)->delete();
+
+        return $booking;
+    }
+    public function showByCustomer($id_customer)
+    {
+        $booking = Booking::find($id_customer)->where('id_customer',$id_customer);
 
         return $booking;
     }
