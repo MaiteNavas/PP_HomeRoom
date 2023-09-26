@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from '../axios/axios';
 import {Link} from 'react-router-dom';
-import Img1 from '../assets/img/Gijon.jpeg'
+import Img1 from '../assets/img/sMartin/0ad0caef-5dcc-4468-8559-f06dcad1d51b.webp'
 import background from '../assets/img/sMartin/683eb956-a958-4c36-bd49-7c086e6c1054.webp'
 
 function Rooms(){

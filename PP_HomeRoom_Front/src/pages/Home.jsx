@@ -2,7 +2,7 @@ import React from "react";
 
 import background from "../assets/img/LaCasinaDeManuela.jpg";
 import House1 from "../assets/img/Gijon.jpeg"
-import House2 from "../assets/img/Raices.jpg"
+import House2 from "../assets/img/gijon/51179160-79a1-4753-9a4e-e0d0530fc870.jpeg"
 import Surf from "../assets/img/actividades/Surf.jpg"
 import Senderismo from "../assets/img/actividades/Senderismo.jpg"
 import Cultura from "../assets/img/actividades/Niemeyer.jpeg"
@@ -57,8 +57,8 @@ export default function Home() {
           </div>
         </div>
 
-          <section className="pb-20 bg-gray-100 ">
-
+          <section className="pb-10 bg-gray-100 ">
+            <h2 className="text-center text-[#213555] font-semibold text-4xl pt-10">Sobre nosotros</h2>
             <div className="flex flex-wrap items-center   py-20 bg-gray-30 w-full">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
 
@@ -67,7 +67,11 @@ export default function Home() {
                 </h3>
 
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged.
                 </p>
                 <a
                   href="/house"
@@ -86,24 +90,6 @@ export default function Home() {
                     src={House1}
                     className="w-full align-middle rounded-t-lg"
                   />
-                  <blockquote className="relative p-8 mb-4">
-                    <svg
-                      preserveAspectRatio="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 583 95"
-                      className="absolute left-0 w-full block"
-                      style={{
-                        height: "95px",
-                        top: "-94px"
-                      }}
-                    >
-                      <polygon
-                        points="-30,95 583,95 583,65"
-                        className="text-[#213555] fill-current"
-                      ></polygon>
-                    </svg>
-                    
-                  </blockquote>
                 </div>
               </div>
 
@@ -116,23 +102,6 @@ export default function Home() {
                     src={House2}
                     className="w-full align-middle rounded-t-lg"
                   />
-                  <blockquote className="relative p-8 mb-4">
-                    <svg
-                      preserveAspectRatio="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 583 95"
-                      className="absolute left-0 w-full block"
-                      style={{
-                        height: "95px",
-                        top: "-94px"
-                      }}
-                    >
-                      <polygon
-                        points="-30,95 583,95 583,65"
-                        className="text-[#213555] fill-current"
-                      ></polygon>
-                    </svg>
-                  </blockquote>
                 </div>
               </div>
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
@@ -141,7 +110,11 @@ export default function Home() {
                   Habitaciones
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                  It has survived not only five centuries, but also the leap into electronic typesetting,
+                  remaining essentially unchanged. 
                 </p>
                 <a
                   href="/room"
@@ -155,7 +128,9 @@ export default function Home() {
           
         </section>
 
-        <section className="relative py-20">
+        <section className="relative pt-10 pb-20">
+          
+          <h2 className="text-center text-[#213555] font-semibold text-4xl mb-12">Actividades</h2>
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
             style={{ height: "80px" }}

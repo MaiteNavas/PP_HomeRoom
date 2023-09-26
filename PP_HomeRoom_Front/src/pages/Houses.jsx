@@ -20,6 +20,7 @@ function Houses(){
 
     <>
     <section className="bg-gray-100">
+
       <div className="relative pt-16 pb-32 flex content-center items-center justify-center"
             style={{
               minHeight: "75vh"
@@ -30,7 +31,7 @@ function Houses(){
               }}>
             <span id="blackOverlay" className="w-full h-full absolute opacity-50 bg-black"></span>
           </div>
-          <div className="container relative mx-auto">
+          <div className="container relative mx-auto max-w-sm">
               <div className="items-center flex flex-wrap">
                 <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                   <div className="pr-12">
@@ -62,19 +63,29 @@ function Houses(){
             </svg>
           </div>
         </div>
-        <div className="width-4/5 mx-8 my-24 py-10 flex justify-center bg-gray-100 ">
-      { houses.map( (house) => (
 
-      <a href="/room" class="flex m-8 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={Img1} alt=""/>
-        <div class="flex flex-col justify-between p-4 leading-normal">
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{house.city}</p>
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{house.name}</h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{house.description}</p>
+
+        <div className="flex flex-nowrap  py-20 bg-gray-30 w-full">
+        { houses.map( (house) => (
+              <div className="w-full md:w-4/12 px-4 mr-auto ml-auto border border-gray-200 rounded-lg shadow bg-gray-200">
+                <div className=" flex flex-col min-w-0 break-words bg-[#213555] w-full">
+                  <img
+                    alt="..."
+                    src={Img1}
+                    className="w-full align-middle rounded-lg"
+                  />
+
+                </div>
+                <div className="w-full flex-col justify-start md:w-full px-4 mr-auto ml-aut bg-gray-200 py-6">
+                  <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">{house.city}</p>
+                  <h3 className="text-3xl mb-2 w-full font-semibold leading-normal">{house.name}</h3>
+                  <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">{house.description}</p>
+                  <a href="/room" className="font-bold text-gray-800 mt-8">Ver Habitaciones</a>
+                </div>
+              </div>
+          ))}
         </div>
-      </a>
-       ))}
-       </div>
+
     </section> 
     </>
       

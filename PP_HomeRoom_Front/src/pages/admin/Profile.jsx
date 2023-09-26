@@ -5,7 +5,7 @@ export default function Profile() {
 	const { user } = useAuth();
 	return (
 		<>
-			<div className="block p-10 bg-white border border-gray-200 shadow-xl rounded-lg shadowdark:border-gray-700">
+			<div className="block p-10 bg-white border border-gray-200 shadow-sm rounded-lg shadowdark:border-gray-700">
 				<h5 className="my-2 text-2xl font-bold tracking-tight">
 					Bienvenido, {user.name}
 				</h5>
