@@ -23,9 +23,9 @@
   - $ git clone (https://github.com/MaiteNavas/PP_HomeRoom)
   <p><strong>Back-End</strong>
     - cd PP_HomeRoom_Back
-    -composer install
-    -configurar conexión a BD
-    -php artisan migrate
+    - composer install
+    - configurar conexión a BD
+    - php artisan migrate
   </p>
   <p><strong>Front-End</strong>
   - cd PP_HomeRoom_Front
