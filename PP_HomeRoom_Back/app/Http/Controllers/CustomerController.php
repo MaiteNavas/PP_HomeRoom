@@ -13,7 +13,7 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
 
-        return $customers;
+        return response()->json(['data' => $customers], 200);
     }
     public function create()
     {

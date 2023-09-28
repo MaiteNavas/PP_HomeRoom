@@ -1,8 +1,9 @@
-import axios from '../../axios/axios';
+import axios from '../../../axios/axios';
 import { useState, useEffect } from 'react';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { useNavigate, Link} from 'react-router-dom';
 
-const BookingDates = () => {
+function CreateBooking(){
+
   const [id_customer, setIdCustomer] = useState('');
   const [id_room, setIdRoom] = useState('');
   const [checkin_date, setCheckinDate] = useState('');
@@ -10,23 +11,9 @@ const BookingDates = () => {
   const [total_adults, setTotalAdults] = useState('');
   const [total_children, setTotalChildren] = useState('');
   const [rooms, setRooms] = useState([]);
-  const [name, setName] = useState('');
-  const [family_name, setFamilyName] = useState('');
-  const [showError, setShowError] = useState(false);
-
+  const [customers, setCustomers] = useState([]);
+  const [showError, setShowError] = useState(false); 
   const navigate = useNavigate();
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    const getCustomerById = async () => {
-      const response = await axios.get(`admin/customer/${id}`);
-      setName(response.data.name);
-      setFamilyName(response.data.family_name);
-      setIdCustomer(response.data.id);
-    };
-    getCustomerById();
-  }, [id]);
 
   useEffect(() => {
     getAllRooms();
@@ -37,6 +24,23 @@ const BookingDates = () => {
       const response = await axios.get('admin/room');
       if (Array.isArray(response.data.data)) {
         setRooms(response.data.data);
+      } else {
+        console.error('La respuesta de la API no es un array válido.', response.data);
+      }
+    } catch (error) {
+      console.error('Error al obtener habitaciones desde la API:', error);
+    }
+  };
+
+  useEffect(() => {
+    getAllCustomers();
+  }, []);
+
+  const getAllCustomers = async () => {
+    try {
+      const response = await axios.get('admin/customer');
+      if (Array.isArray(response.data.data)) {
+        setCustomers(response.data.data);
       } else {
         console.error('La respuesta de la API no es un array válido.', response.data);
       }
@@ -61,40 +65,48 @@ const BookingDates = () => {
       total_children: total_children,
        
     });
-    const bookingId = response.data.id;
-    navigate(`/booking/success/${id_customer}/${bookingId}`);
+
+    navigate(`/admin/booking`);
   };
 
   return (
-    <section className="flex bg-gray-100 w-full">
-      <button type="button" className="absolute my-8 mx-14 text-white bg-[#213555] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><Link to={'/'}>Volver</Link></button>
-      <div className="flex flex-col w-full mb-8 items-center  py-8 mx-auto md:h-4/5 lg:py-8">
+
+    <section className="bg-gray-100 dark:bg-gray-900 mx-auto">
+      <button type="button" className="absolute my-8 mx-14 text-white bg-[#213555] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><Link to={'/admin/house'}>Volver</Link></button>
+      <div className="flex flex-col w-4/5 items-center  py-8 mx-auto md:h-full lg:py-8">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-sm font-semi-bold leading-tight tracking-tight text-[#213555] md:text-2xl dark:text-white">
-              Detalles de la reserva
+            <h1 className="text-xl font-semi-bold leading-tight tracking-tight text-[#213555] md:text-2xl dark:text-white">
+              Nueva reserva
             </h1>
             <form className="space-y-4 md:space-y-6" method="post" onSubmit={store}>
-              <div hidden>
+              <div>
                 <label
-                  htmlFor="name"
-                  className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
+                  htmlFor="customer"
+                  className="block mb-2 text-sm font-medium text-[#213555] dark:text-white"
                 >
-                  {name} {family_name}
+                  Cliente
                 </label>
-                <input
-                  value={id_customer}
-                  type="text"
+                <select
+                  id="customer"
                   name="id_customer"
-                  id="name"
-                  className="invisible"
-                  onChange={(e) => setIdCustomer(e.target.value)}
-                />
+                  onChange={(e) => {
+                    setIdCustomer(e.target.value);
+                  }}
+                  className="bg-gray-50 border border-gray-300 text-[#213555] sm:text-sm rounded-lg focus:ring-[#213555] focus:border-[#213555] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option value="">Selecciona un cliente</option>
+                  {customers.map((customer) => (
+                    <option value={customer.id} key={customer.id}>
+                      {customer.name} {customer.family_name}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label
                   htmlFor="room"
-                  className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
+                  className="block mb-2 text-sm font-medium text-[#213555] dark:text-white"
                 >
                   Habitación
                 </label>
@@ -109,7 +121,7 @@ const BookingDates = () => {
                   <option value="">Selecciona una habitación</option>
                   {rooms.map((room) => (
                     <option value={room.id} key={room.id}>
-                      {room.house.name}-{room.name} ({room.price}€)
+                      {room.house.name}-{room.name}
                     </option>
                   ))}
                 </select>
@@ -117,7 +129,7 @@ const BookingDates = () => {
               <div>
                 <label
                   htmlFor="checkin_date"
-                  className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
+                  className="block mb-2 text-sm font-medium text-[#213555] dark:text-white"
                 >
                   Fecha de entrada
                 </label>
@@ -138,7 +150,7 @@ const BookingDates = () => {
               <div>
                 <label
                   htmlFor="checkout_date"
-                  className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
+                  className="block mb-2 text-sm font-medium text-[#213555] dark:text-white"
                 >
                   Fecha de salida
                 </label>
@@ -154,7 +166,7 @@ const BookingDates = () => {
               <div>
                 <label
                   htmlFor="adults"
-                  className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
+                  className="block mb-2 text-sm font-medium text-[#213555] dark:text-white"
                 >
                   Adultos
                 </label>
@@ -170,7 +182,7 @@ const BookingDates = () => {
               <div>
                 <label
                   htmlFor="children"
-                  className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
+                  className="block mb-2 text-sm font-medium text-[#213555] dark:text-white"
                 >
                   Niños
                 </label>
@@ -198,4 +210,4 @@ const BookingDates = () => {
   );
 };
 
-export default BookingDates;
+export default CreateBooking;

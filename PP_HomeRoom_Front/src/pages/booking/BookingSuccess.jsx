@@ -47,21 +47,21 @@ function BookingSuccess(){
 
     return (
         <>
-        <div className="block p-10 bg-white border border-gray-200 shadow-xl rounded-lg shadowdark:border-gray-700">
-				<h5 className="my-2 text-2xl font-bold tracking-tight text-green-500">
+        <div className="block p-10 bg-white border border-gray-200 shadow-xl rounded-lg shadowdark:border-[#213555]">
+				<p className="my-2 text-xl font-bold tracking-tight text-green-500">
 					{name}, su reserva se ha realizado con éxito!
-				</h5>
-				<p className="font-normal text-gray-700">Gracias por su reserva, en breve de le mandaremos un correo electrónico de confirmación a : {email}</p>
+				</p>
+				<p className="font-normal text-[#213555]">Gracias por su reserva, en breve de le mandaremos un correo electrónico de confirmación a : {email}</p>
 		</div>
-        <div className="block p-10 bg-white border border-gray-200 shadow-xl rounded-lg shadowdark:border-gray-700">
-				<h5 className="my-2 text-2xl font-bold tracking-tight text-gray-900">
+        <div className="block p-10 bg-white border border-gray-200 shadow-xl rounded-lg shadowdark:border-[#213555]">
+				<h5 className="my-2 text-2xl font-bold tracking-tight text-[#213555]">
 					Detalles de la reserva:
 				</h5>
-				<p className="font-normal text-gray-700">Habitación : {room_name}</p>
-                <p className="font-normal text-gray-700">Fecha de entrada : {checkin_date}</p>
-                <p className="font-normal text-gray-700">Fecha de salida : {checkout_date}</p>
-                <p className="font-normal text-gray-700">Adultos : {total_adults}</p>
-                <p className="font-normal text-gray-700">Niños : {total_children}</p>
+				<p className="font-normal text-[#213555]">Habitación : {room_name}</p>
+                <p className="font-normal text-[#213555]">Fecha de entrada : {checkin_date}</p>
+                <p className="font-normal text-[#213555]">Fecha de salida : {checkout_date}</p>
+                <p className="font-normal text-[#213555]">Adultos : {total_adults}</p>
+                <p className="font-normal text-[#213555]">Niños : {total_children}</p>
 		</div>
         </>
     )

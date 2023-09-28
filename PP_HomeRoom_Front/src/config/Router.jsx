@@ -23,6 +23,8 @@ import IndexBooking from '../pages/admin/booking/IndexBooking';
 import EditBooking from '../pages/admin/booking/EditBooking';
 import ShowCustomer from '../pages/admin/customer/ShowCustomer';
 import Calendar from '../pages/admin/calendar/Calendar';
+import CreateBooking from '../pages/admin/booking/CreateBooking';
+import Register from '../pages/admin/Register';
 
 
 const router = createBrowserRouter([
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
 		children: [
             {
 				path: '/',
-				element: <Home />,
+				element: <Home/>,
 			},
 			{
 				path: '/login',
@@ -71,6 +73,10 @@ const router = createBrowserRouter([
             {
 				path: '/profile',
 				element: <Profile />,
+			},
+			{
+				path: '/admin/register',
+				element: <Register/>,
 			},
 			{
 				path: '/admin/house',
@@ -115,6 +121,10 @@ const router = createBrowserRouter([
 			{
 				path: '/admin/booking',
 				element: <IndexBooking/>,
+			},
+			{
+				path: '/admin/booking/create',
+				element: <CreateBooking/>,
 			},
 			{
 				path: '/admin/booking/edit/:id',

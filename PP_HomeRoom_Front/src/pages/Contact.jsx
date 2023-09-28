@@ -1,10 +1,15 @@
+import {Link } from 'react-router-dom';
+
+
 function Contact(){
 
 
     return(
         <>
-        <section className=" bg-gray-100 dark:bg-gray-900">
-			<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <section className="flex bg-gray-100 w-full">
+		<button type="button" className="absolute my-8 mx-14 text-white bg-[#213555] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><Link to={'/'}>Volver</Link></button>
+
+			<div className="flex flex-col w-full mb-8 items-center  py-8 mx-auto md:h-4/5 lg:py-8">
 				<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
 					<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
 						<h1 className="text-xl font-semi-bold leading-tight tracking-tight text-[#213555] md:text-2xl dark:text-white">
@@ -18,7 +23,7 @@ function Contact(){
 							<div>
 								<label
 									htmlFor="name"
-									className="block mb-2 text-sm font-medium text-[#213555] dark:text-white">
+									className="block mb-1 text-sm font-medium text-[#213555] dark:text-white">
 									Nombre
 								</label>
 								<input
@@ -34,7 +39,7 @@ function Contact(){
 							<div>
 								<label
 									htmlFor="email"
-									className="block mb-2 text-sm font-medium text-[#213555] dark:text-white">
+									className="block mb-1 text-sm font-medium text-[#213555] dark:text-white">
 									Correo electrónico
 								</label>
 								<input
@@ -50,8 +55,8 @@ function Contact(){
                             <div>
 								<label
 									htmlFor="cpassword"
-									className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-									Telefono
+									className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
+									Teléfono
 								</label>
 								<input
 									type="text"
@@ -64,7 +69,7 @@ function Contact(){
 							<div>
 								<label
 									htmlFor="password"
-									className="block mb-2 text-sm font-medium text-[#213555] dark:text-white">
+									className="block mb-1 text-sm font-medium text-[#213555] dark:text-white">
 									Comentario
 								</label>
 								<textarea

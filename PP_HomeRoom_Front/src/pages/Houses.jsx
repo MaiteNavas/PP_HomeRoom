@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import axios from '../axios/axios';
-import {Link} from 'react-router-dom';
 import Img1 from "../assets/img/LaCasinaDeManuela.jpg";
 import background from '../assets/img/sMartin/43bbcdf1-c5c3-4ce3-a9ce-3b4dd83d79cc.jpeg'
 
@@ -18,9 +17,7 @@ function Houses(){
   };
     return (
 
-    <>
     <section className="bg-gray-100">
-
       <div className="relative pt-16 pb-32 flex content-center items-center justify-center"
             style={{
               minHeight: "75vh"
@@ -31,7 +28,7 @@ function Houses(){
               }}>
             <span id="blackOverlay" className="w-full h-full absolute opacity-50 bg-black"></span>
           </div>
-          <div className="container relative mx-auto max-w-sm">
+          <div className="container relative center mx-auto">
               <div className="items-center flex flex-wrap">
                 <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                   <div className="pr-12">
@@ -65,29 +62,29 @@ function Houses(){
         </div>
 
 
-        <div className="flex flex-nowrap  py-20 bg-gray-30 w-full">
-        { houses.map( (house) => (
-              <div className="w-full md:w-4/12 px-4 mr-auto ml-auto border border-gray-200 rounded-lg shadow bg-gray-200">
-                <div className=" flex flex-col min-w-0 break-words bg-[#213555] w-full">
-                  <img
-                    alt="..."
-                    src={Img1}
-                    className="w-full align-middle rounded-lg"
-                  />
+        <div className="flex justify-items-center px-8 pb-24 pt-14  bg-gray-100 w-full ">
+          { houses.map( (house) => (
+            <div className="w-full md:w-4/12 px-4 mx-8 ml-auto border border-gray-200 rounded-lg shadow bg-gray-200">
+              <div className=" flex flex-col min-w-0 break-words bg-[#213555] w-full">
+                <img
+                  alt="..."
+                  src={Img1}
+                  className="w-full align-middle rounded-lg"
+                />
 
-                </div>
-                <div className="w-full flex-col justify-start md:w-full px-4 mr-auto ml-aut bg-gray-200 py-6">
-                  <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">{house.city}</p>
-                  <h3 className="text-3xl mb-2 w-full font-semibold leading-normal">{house.name}</h3>
-                  <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">{house.description}</p>
-                  <a href="/room" className="font-bold text-gray-800 mt-8">Ver Habitaciones</a>
-                </div>
               </div>
+              <div className="w-full flex-col justify-start md:w-full px-4 mr-auto ml-aut bg-gray-200 py-6">
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">{house.city}</p>
+                <h3 className="text-3xl mb-2 w-full font-semibold leading-normal">{house.name}</h3>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">{house.description}</p>
+                <a href="/room" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#213555] rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  Ver habitaciones
+              </a>
+              </div>
+            </div>
           ))}
         </div>
-
     </section> 
-    </>
       
     )
 }
