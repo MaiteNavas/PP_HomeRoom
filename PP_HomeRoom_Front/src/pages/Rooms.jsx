@@ -70,9 +70,9 @@ function Rooms(){
         </div>
       </div>
 
-      <div className="flex justify-items-center px-8 pb-24 pt-14  bg-gray-100 w-full ">
+      <div className="flex flex-wrap items-center py-20 bg-gray-100 w-full ">
         { rooms.map((room) => (
-        <div class="max-w-sm mx-4 bg-gray-100  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="max-w-sm mx-4 mb-4 bg-gray-100  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img class="rounded-t-lg" src={Img1} alt="" />
             </a>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Room;
-use App\Models\House;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -40,7 +39,7 @@ class RoomController extends Controller
     }
     public function update(Request $request)
     {
-        $room = House::findorFail($request->id);
+        $room = Room::findorFail($request->id);
         $room->update([
             'id_house' => $request->id_house,
             'name' => $request->name,

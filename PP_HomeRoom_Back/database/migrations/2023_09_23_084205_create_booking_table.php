@@ -21,7 +21,8 @@ return new class extends Migration
             $table->foreign('id_booking_status')->references('id')->on('booking_status');
             $table->date('checkin_date');
             $table->date('checkout_date');
-            $table->string('total_adults');
+            $table->date('checkout_date');
+            $table->integer('nights');
             $table->string('total_children');
             $table->string('price');
             $table->timestamps();

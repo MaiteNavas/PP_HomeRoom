@@ -45,7 +45,7 @@ export default function Home() {
       </div>
       <section className="pb-10 bg-gray-100 ">
         <h2 className="text-center text-[#213555] font-semibold text-4xl pt-10">Sobre nosotros</h2>
-        <div className="flex flex-wrap items-center   py-20 bg-gray-30 w-full">
+        <div className="flex flex-wrap items-center py-20 bg-gray-300 w-full">
           <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
             <h3 className="text-3xl mb-2 font-semibold leading-normal text-[#213555]">
                 Alojamientos

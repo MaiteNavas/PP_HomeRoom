@@ -7,6 +7,7 @@ const BookingDates = () => {
   const [id_room, setIdRoom] = useState('');
   const [checkin_date, setCheckinDate] = useState('');
   const [checkout_date, setCheckoutDate] = useState('');
+  const [nights, setNights] = useState(0);
   const [total_adults, setTotalAdults] = useState('');
   const [total_children, setTotalChildren] = useState('');
   const [rooms, setRooms] = useState([]);
@@ -44,6 +45,22 @@ const BookingDates = () => {
       console.error('Error al obtener habitaciones desde la API:', error);
     }
   };
+  useEffect(() => {
+    if (checkin_date && checkout_date) {
+      if (new Date(checkout_date) <= new Date(checkin_date)) {
+        setShowError(true);
+        setNights(0); 
+      } else {
+        const checkinDate = new Date(checkin_date);
+        const checkoutDate = new Date(checkout_date);
+        const timeDifference = checkoutDate.getTime() - checkinDate.getTime();
+        const nights = Math.ceil(timeDifference / (1000 * 3600 * 24));
+        setNights(nights);
+      }
+    } else {
+      setNumNights(0);
+    }
+  }, [checkin_date, checkout_date]);
 
   const store = async (e) => {
     e.preventDefault();
@@ -57,6 +74,7 @@ const BookingDates = () => {
       id_room: id_room,
       checkin_date: checkin_date,
       checkout_date: checkout_date,
+      nights: nights,
       total_adults: total_adults,
       total_children: total_children,
        
@@ -75,14 +93,14 @@ const BookingDates = () => {
               Detalles de la reserva
             </h1>
             <form className="space-y-4 md:space-y-6" method="post" onSubmit={store}>
-              <div hidden>
+              <div >
                 <label
                   htmlFor="name"
                   className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
                 >
                   {name} {family_name}
                 </label>
-                <input
+                <input hidden
                   value={id_customer}
                   type="text"
                   name="id_customer"
@@ -109,7 +127,7 @@ const BookingDates = () => {
                   <option value="">Selecciona una habitación</option>
                   {rooms.map((room) => (
                     <option value={room.id} key={room.id}>
-                      {room.house.name}-{room.name} ({room.price}€)
+                      {room.house.name}-{room.name}
                     </option>
                   ))}
                 </select>
@@ -153,9 +171,28 @@ const BookingDates = () => {
               </div>
               <div>
                 <label
+                  htmlFor="nights"
+                  className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
+                >
+                  Número de noches: 
+                </label>
+                <input
+                  value={nights}
+                  type="number"
+                  name="total_adults"
+                  id="nights"
+                  className="bg-gray-50 border border-gray-300 text-[#213555] sm:text-sm rounded-lg focus:ring-[#213555] focus:border-[#213555] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  onChange={(e) => setNights(e.target.value)}
+                  required
+                  readOnly
+                />
+              </div>
+              <div>
+                <label
                   htmlFor="adults"
                   className="block mb-1 text-sm font-medium text-[#213555] dark:text-white"
                 >
+                  
                   Adultos
                 </label>
                 <input
