@@ -24,8 +24,9 @@
   <p><strong>Back-End</strong></p>
     <p>- cd PP_HomeRoom_Back</p>
     <p>- composer install</p>
-    <p>- configurar conexión a BD</p>
+    <p>- configurar conexión a BD en .env</p>
     <p>- php artisan migrate</p>
+    
 
   <p><strong>Front-End</strong></p>
     <p>- cd PP_HomeRoom_Front</p>
