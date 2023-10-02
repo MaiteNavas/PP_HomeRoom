@@ -23,15 +23,15 @@
   - $ git clone (https://github.com/MaiteNavas/PP_HomeRoom)
   <p><strong>Back-End</strong></p>
   - $ cd PP_HomeRoom_Back
-    <p>- composer install</p>
-    <p>- configurar conexión a BD en .env</p>
-    <p>- php artisan migrate</p>
+  - $ composer install</p>
+  - $ configurar conexión a BD en .env</p>
+  - $ php artisan migrate</p>
     
 
   <p><strong>Front-End</strong></p>
-    <p>- cd PP_HomeRoom_Front</p>
-    <p>- npm install react-router-dom axios flowbite flowbite-react @emailjs/browser</p>
-    <p>- npm run dev</p>
+  - $ cd PP_HomeRoom_Front</p>
+  - $ npm install react-router-dom axios flowbite flowbite-react @emailjs/browser</p>
+  - $ npm run dev</p>
 
 <h4> 4. ⚙️ Tecnologías Utilizadas:</h4>
 
