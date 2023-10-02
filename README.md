@@ -28,7 +28,6 @@
   - $ configurar conexión a BD en .env
   - $ php artisan migrate
     
-
   <p><strong>Front-End</strong></p>
   - $ cd PP_HomeRoom_Front
   - $ npm install react-router-dom axios flowbite flowbite-react @emailjs/browser
