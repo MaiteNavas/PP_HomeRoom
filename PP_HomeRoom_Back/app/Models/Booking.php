@@ -17,6 +17,7 @@ class Booking extends Model
         "id_booking_status",
         "checkin_date",
         "checkout_date",
+        "nights",
         "total_adults",
         "total_children",
         "price"

@@ -62,10 +62,10 @@ function Houses(){
         </div>
 
 
-        <div className="flex justify-items-center px-8 pb-24 pt-14  bg-gray-100 w-full ">
+        <div className="flex flex-wrap items-center py-20 w-full bg-gray-100">
           { houses.map( (house) => (
-            <div className="w-full md:w-4/12 px-4 mx-8 ml-auto border border-gray-200 rounded-lg shadow bg-gray-200">
-              <div className=" flex flex-col min-w-0 break-words bg-[#213555] w-full">
+            <div className="max-w-sm mx-4 mb-4 bg-gray-100  border border-gray-200 rounded-lg shadow dark:bg-gray-800">
+              <div className=" flex flex-col min-w-0 break-words rounded-lg bg-[#213555] w-full">
                 <img
                   alt="..."
                   src={Img1}

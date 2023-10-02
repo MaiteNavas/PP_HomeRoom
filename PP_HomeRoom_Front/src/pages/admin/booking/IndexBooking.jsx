@@ -45,7 +45,7 @@ function IndexBooking(){
                         ESTADO
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        ID CLIENTE
+                        NOMBRE
                     </th>
                     <th scope="col" className="px-6 py-3">
                         HABITACIÓN
@@ -55,6 +55,9 @@ function IndexBooking(){
                     </th>
                     <th scope="col" className="px-6 py-3">
                         CHECKOUT
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        NOCHES
                     </th>
                     <th scope="col" className="px-6 py-3">
                         PRECIO
@@ -84,6 +87,9 @@ function IndexBooking(){
                     </td>
                     <td className="px-6 py-4">
                     {booking.checkout_date}
+                    </td>
+                    <td className="px-6 py-4">
+                    {booking.nights}
                     </td>
                     <td className="px-6 py-4">
                     {booking.price}

@@ -31,6 +31,9 @@ function EditRoom(){
         };
         getRoomById();    
     }, []);
+    const setSelectedHouse = (house_id) => {
+        setIdHouse(house_id);
+      };
     
     const update = async (e) => {
         e.preventDefault();
@@ -96,11 +99,12 @@ function EditRoom(){
                                 className="block mb-2 text-sm font-medium text-[#213555] dark:text-white">
                                 Alojamiento
                             </label>
-                            <select id="house" name="id_house" onChange={ (e)=> setIdHouse(e.target.value)} class="bg-gray-50 border border-gray-300 text-[#213555] sm:text-sm rounded-lg focus:ring-[#213555] focus:border-[#213555] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option value="" selected>Selecciona un alojamiento</option>
-                                { houses.map( (house) => (
-                                <option value={house.id} key={house.id} >{house.name}</option>
-                                ))}  
+                            <select id="house" name="id_house" value={id_house} onChange={ (e)=> setSelectedHouse(e.target.value)} className="bg-gray-50 border border-gray-300 text-[#213555] sm:text-sm rounded-lg focus:ring-[#213555] focus:border-[#213555] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="" defaultValue>Selecciona un alojamiento</option>
+                                    {houses.map((house) => (
+                                        <option value={house.id} key={house.id}>{house.name}</option>
+                                    ))}
+
                             </select>
                         </div>
                         <div>

@@ -16,4 +16,7 @@ class House extends Model
         "description",
         "city",
     ];
+    function room(){
+        return $this->hasMany(House::class);
+    }
 }
