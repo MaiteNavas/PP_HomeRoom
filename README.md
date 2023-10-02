@@ -21,17 +21,17 @@
   <h6> Debes realizar las siguientes instalaciones:</h6>
      
   - $ git clone (https://github.com/MaiteNavas/PP_HomeRoom)
-  <p><strong>Back-End</strong>
-    - cd PP_HomeRoom_Back
-    -composer install
-    -configurar conexión a BD
-    -php artisan migrate
-  </p>
-  <p><strong>Front-End</strong>
-  - cd PP_HomeRoom_Front
-  - npm install react-router-dom axios flowbite flowbite-react
-  - npm run dev
-  </p>
+  <p><strong>Back-End</strong></p>
+    <p>- cd PP_HomeRoom_Back</p>
+    <p>- composer install</p>
+    <p>- configurar conexión a BD en .env</p>
+    <p>- php artisan migrate</p>
+    
+
+  <p><strong>Front-End</strong></p>
+    <p>- cd PP_HomeRoom_Front</p>
+    <p>- npm install react-router-dom axios flowbite flowbite-react</p>
+    <p>- npm run dev</p>
 
 <h4> 4. ⚙️ Tecnologías Utilizadas:</h4>
 
