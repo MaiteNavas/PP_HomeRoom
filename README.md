@@ -21,14 +21,14 @@
   <h6> Debes realizar las siguientes instalaciones:</h6>
      
   - $ git clone (https://github.com/MaiteNavas/PP_HomeRoom)
-  <p><strong>Back-End</strong></p>
+  - <strong>Back-End</strong>
   
   - $ cd PP_HomeRoom_Back
   - $ composer install
   - $ configurar conexión a BD en .env
   - $ php artisan migrate
     
-  <p><strong>Front-End</strong></p>
+ - <strong>Front-End</strong>
   - $ cd PP_HomeRoom_Front
   - $ npm install react-router-dom axios flowbite flowbite-react @emailjs/browser
   - $ npm run dev
